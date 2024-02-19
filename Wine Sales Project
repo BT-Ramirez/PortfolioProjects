@@ -73,5 +73,19 @@ From #TotalNetProfit
 group by Menu_Item
 order by Highest_Net_Bottle  DESC
 
+-- Amount Discounted Per Month
 
+Select Sum(Discount_Amount) as Total_Discount, Month
+From Wine_Sales
+Group by Month
+Order by Total_Discount DESC
+
+-- Total Count of Bottles Sold over $100
+
+Select SUM(Item_Qty) AS TotalCount, Month
+From Wine_Sales
+WHERE Gross_Amount / Item_Qty >= 100
+AND Item_Qty != 0
+GROUP BY Month 
+Order BY TotalCount DESC
 
